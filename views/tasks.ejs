@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tasks</title>
+</head>
+<body>
+  <h1>Your Tasks</h1>
+  <form method="POST" action="/tasks/add">
+    <input type="text" name="title" placeholder="New Task" required>
+    <button type="submit">Add Task</button>
+  </form>
+  <ul>
+    <% tasks.forEach(task => { %>
+      <li>
+        <%= task.title %>
+        <form method="POST" action="/tasks/delete/<%= task.id %>" style="display:inline;">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+  <a href="/auth/logout">Logout</a>
+</body>
+</html>
